@@ -14,7 +14,7 @@ RUN dnf upgrade -y\
 	&& dnf install -y\
 		chromedriver-62.0.3202.89-1.fc27\
 		chromium-62.0.3202.89-1.fc27\
-		firefox-57.0-2.fc27\
+		firefox-57.0-0.8.fc27\
 		python2-pip-9.0.1-11.fc27\
 		which-2.21-4.fc27\
 		xorg-x11-server-Xvfb-1.19.5-1.fc27\
