@@ -12,12 +12,13 @@ ENV SCREEN_WIDTH 1920
 
 RUN dnf upgrade -y\
 	&& dnf install -y\
-		chromedriver-62.0.3202.89-1.fc27\
-		chromium-62.0.3202.89-1.fc27\
+		chromedriver-63.0.3239.108-1.fc27\
+		chromium-63.0.3239.108-1.fc27\
 		firefox-57.0-0.8.fc27\
 		python2-pip-9.0.1-11.fc27\
 		which-2.21-4.fc27\
 		xorg-x11-server-Xvfb-1.19.5-1.fc27\
+		wget\
 	&& dnf clean all
 
 RUN pip install robotframework==3.0.2\
@@ -34,10 +35,10 @@ COPY bin/run-tests-in-virtual-screen.sh /opt/robotframework/bin/
 
 ARG DIR_RF=/opt/robotframework/tests
 ARG GIT_URL=http://ptgit:10080/ptturva/rf-testit/repository/archive.zip?ref=master
-RUN cd $DIR_RF; \
-RUN wget --no-check-certificate -O master.zip $GIT_URL;
-RUN unzip $DIR_RF/master.zip;
-RUN rm $DIR_RF/master.zip;
+RUN cd $DIR_RF
+RUN wget --no-check-certificate -O master.zip $GIT_URL
+RUN unzip $DIR_RF/master.zip
+RUN rm $DIR_RF/master.zip
 
 # FIXME: below is a workaround, as the path is ignored
 RUN mv /usr/lib64/chromium-browser/chromium-browser /usr/lib64/chromium-browser/chromium-browser-original\
