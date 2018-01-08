@@ -32,12 +32,12 @@ COPY bin/chromedriver.sh /opt/robotframework/bin/chromedriver
 COPY bin/chromium-browser.sh /opt/robotframework/bin/chromium-browser
 COPY bin/run-tests-in-virtual-screen.sh /opt/robotframework/bin/
 
-DIR_RF ="/opt/robotframework/tests"
-GIT_URL="http://ptgit:10080/ptturva/rf-testit/repository/archive.zip?ref=master"
-cd $DIR_RF; \
-wget --no-check-certificate -O master.zip $GIT_URL;
-unzip $DIR_RF/master.zip;
-rm $DIR_RF/master.zip;
+ARG DIR_RF=/opt/robotframework/tests
+ARG GIT_URL=http://ptgit:10080/ptturva/rf-testit/repository/archive.zip?ref=master
+RUN cd $DIR_RF; \
+RUN wget --no-check-certificate -O master.zip $GIT_URL;
+RUN unzip $DIR_RF/master.zip;
+RUN rm $DIR_RF/master.zip;
 
 # FIXME: below is a workaround, as the path is ignored
 RUN mv /usr/lib64/chromium-browser/chromium-browser /usr/lib64/chromium-browser/chromium-browser-original\
