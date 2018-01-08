@@ -33,8 +33,8 @@ COPY bin/chromedriver.sh /opt/robotframework/bin/chromedriver
 COPY bin/chromium-browser.sh /opt/robotframework/bin/chromium-browser
 COPY bin/run-tests-in-virtual-screen.sh /opt/robotframework/bin/
 
-ARG DIR_RF=/opt/robotframework/tests
-ARG GIT_URL=http://ptgit:10080/ptturva/rf-testit/repository/archive.zip?ref=master
+ENV DIR_RF /opt/robotframework/tests
+ENV GIT_URL http://ptgit:10080/ptturva/rf-testit/repository/archive.zip?ref=master
 RUN cd $DIR_RF
 RUN wget --no-check-certificate -O master.zip $GIT_URL
 RUN unzip $DIR_RF/master.zip
