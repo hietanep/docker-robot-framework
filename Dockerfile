@@ -19,7 +19,6 @@ RUN dnf upgrade -y\
 		which-2.21-4.fc27\
 		xorg-x11-server-Xvfb-1.19.5-1.fc27\
 		wget\
-		git\
 	&& dnf clean all
 
 RUN pip install robotframework==3.0.2\
@@ -34,13 +33,6 @@ COPY bin/chromedriver.sh /opt/robotframework/bin/chromedriver
 COPY bin/chromium-browser.sh /opt/robotframework/bin/chromium-browser
 COPY bin/run-tests-in-virtual-screen.sh /opt/robotframework/bin/
 
-ENV DIR_RF /opt/robotframework/tests
-ENV GIT_URL http://ptgit:10080/ptturva/rf-testit/repository/archive.zip?ref=master
-RUN cd $DIR_RF
-RUN wget --no-check-certificate -O master.zip $GIT_URL
-RUN unzip $DIR_RF/master.zip
-RUN rm $DIR_RF/master.zip
-#RUN git clone ssh://git@ptgit:10022/ptturva/rf-testit.git
 
 # FIXME: below is a workaround, as the path is ignored
 RUN mv /usr/lib64/chromium-browser/chromium-browser /usr/lib64/chromium-browser/chromium-browser-original\
