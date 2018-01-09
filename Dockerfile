@@ -19,6 +19,7 @@ RUN dnf upgrade -y\
 		which-2.21-4.fc27\
 		xorg-x11-server-Xvfb-1.19.5-1.fc27\
 		wget\
+		git\
 	&& dnf clean all
 
 RUN pip install robotframework==3.0.2\
