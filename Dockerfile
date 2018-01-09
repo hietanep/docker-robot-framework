@@ -37,10 +37,10 @@ COPY bin/run-tests-in-virtual-screen.sh /opt/robotframework/bin/
 ENV DIR_RF /opt/robotframework/tests
 ENV GIT_URL http://ptgit:10080/ptturva/rf-testit/repository/archive.zip?ref=master
 RUN cd $DIR_RF
-#RUN wget --no-check-certificate -O master.zip $GIT_URL
-#RUN unzip $DIR_RF/master.zip
-#RUN rm $DIR_RF/master.zip
-RUN git clone ssh://git@ptgit:10022/ptturva/rf-testit.git
+RUN wget --no-check-certificate -O master.zip $GIT_URL
+RUN unzip $DIR_RF/master.zip
+RUN rm $DIR_RF/master.zip
+#RUN git clone ssh://git@ptgit:10022/ptturva/rf-testit.git
 
 # FIXME: below is a workaround, as the path is ignored
 RUN mv /usr/lib64/chromium-browser/chromium-browser /usr/lib64/chromium-browser/chromium-browser-original\
